@@ -8,6 +8,7 @@ template <typename T, std::size_t N> class RingBufferUnbounded {
     static_assert(N > 0, "Capacity must be greater than zero");
     static_assert((N & (N - 1)) == 0, "Capacity must be a power of two");
 
+  public:
     [[nodiscard]] std::size_t size() const noexcept { return head_ - tail_; }
     [[nodiscard]] bool empty() const noexcept { return head_ == tail_; }
     [[nodiscard]] bool full() const noexcept { return head_ - tail_ == N; }
